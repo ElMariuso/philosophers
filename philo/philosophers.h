@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:06:01 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/15 20:25:51 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/15 20:40:10 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,27 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
-typedef struct s_rules
-{
-    int     nb_philo;
-    int     time_to_die;
-    int     time_to_eat;
-    int     time_to_sleep;
-    int     nb_time_philo_eat;
-    bool    all_eat;
-    //forks
-    //philos
-} t_rules;
-
 typedef struct s_philo
 {
-    int         id;
-    int         nb_eat;
-    int         right_fork;
-    int         left_fork;
-    t_rules     rules;
-    pthread_t   thread;
+    int             id;
+    int             nb_eat;
+    int             right_fork;
+    int             left_fork;
+    struct s_rules  *rules;
+    pthread_t       thread;
 } t_philo;
+
+typedef struct s_rules
+{
+    int             nb_philo;
+    int             time_to_die;
+    int             time_to_eat;
+    int             time_to_sleep;
+    int             nb_time_philo_eat;
+    bool            all_eat;
+    pthread_mutex_t forks[10000];
+    t_philo         philo[10000];
+} t_rules;
 
 int     print_error(char    *message);
 int     init_all(t_rules *rules, char   **argv);

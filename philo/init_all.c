@@ -6,11 +6,42 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:57:47 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/15 20:26:07 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/15 20:40:25 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int init_forks(t_rules *rules)
+{
+    int i;
+
+    i = 0;
+    while (i <= rules->nb_philo)
+    {
+        if (pthread_mutex_init(&(rules->forks[i]), NULL))
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+int init_philos(t_rules *rules)
+{
+    int i;
+
+    i = 1;
+    while (i <= rules->nb_philo)
+    {
+        rules->philo[i].id = i;
+        rules->philo[i].nb_eat = 0;
+        //rules->philo[i].id = i;
+        //rules->philo[i].id = i;
+        rules->philo[i].rules = rules;
+        i++;
+    }
+    return (0);
+}
 
 int init_all(t_rules *rules, char   **argv)
 {
@@ -18,7 +49,7 @@ int init_all(t_rules *rules, char   **argv)
     rules->time_to_die = ft_atoi(argv[2]);
     rules->time_to_eat = ft_atoi(argv[3]);
     rules->time_to_sleep = ft_atoi(argv[4]);
-    if (rules->nb_philo <= 0 || rules->time_to_die <= 0 
+    if (rules->nb_philo <= 0 || rules->nb_philo > 10000 || rules->time_to_die <= 0 
     || rules->time_to_eat <= 0 || rules->time_to_sleep <= 0)
         return (1);
     if (argv[5] != NULL)
@@ -29,5 +60,7 @@ int init_all(t_rules *rules, char   **argv)
     }
     else
         rules->nb_time_philo_eat = 0;
+    if (init_philos(rules) != 0)
+        return (1);
     return (0);
 }
