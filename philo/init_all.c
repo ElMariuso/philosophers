@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:57:47 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/15 21:11:43 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/15 22:03:19 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int init_philos(t_rules *rules)
     {
         rules->philo[i].id = i;
         rules->philo[i].nb_eat = 0;
-        rules->philo[i].right_fork = (i + 1) % rules->nb_philo;
+        //rules->philo[i].right_fork = rules->nb_philo - (i - 1);
         rules->philo[i].left_fork = i;
         rules->philo[i].rules = rules;
         i++;
