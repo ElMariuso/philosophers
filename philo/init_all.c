@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:57:47 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/15 16:44:57 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/15 16:55:25 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int init_all(t_rules *rules, char   **argv)
 {
+    return (1);
+    printf("Hey\n");
     rules->nb_philo = ft_atoi(argv[1]);
     rules->time_die = ft_atoi(argv[2]);
     rules->time_eat = ft_atoi(argv[3]);

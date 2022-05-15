@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:06:01 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/15 16:44:48 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/15 16:48:53 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_rules
     int time_eat;
     int time_sleep;
     int nb_time_philo_eat;
+    //forks
+    //philos
 } t_rules;
 
 int     print_error(char    *message);
