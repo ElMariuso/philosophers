@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:57:47 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 14:43:57 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:05:27 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int init_forks(t_rules *rules)
     int i;
 
     i = 0;
-    while (i <= rules->nb_philo)
+    rules->forks = (pthread_mutex_t *) malloc (rules->nb_philo * sizeof(pthread_mutex_t ));
+    if (!rules->forks)
+        return (1);
+    while (i < rules->nb_philo)
     {
-        if (pthread_mutex_init(&(rules->forks[i]), NULL))
+        if (pthread_mutex_init(&rules->forks[i], NULL))
             return (1);
         i++;
     }
@@ -31,7 +34,10 @@ int init_philos(t_rules *rules)
     int i;
 
     i = 1;
-    while (i <= rules->nb_philo)
+    rules->philo = (t_philo *) malloc (rules->nb_philo * sizeof(t_philo));
+    if (!rules->philo)
+        return (1);
+    while (i < rules->nb_philo)
     {
         rules->philo[i].id = i;
         rules->philo[i].nb_eat = 0;

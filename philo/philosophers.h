@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:06:01 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 15:12:30 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:04:09 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ typedef struct s_philo
 {
     int             id;
     int             nb_eat;
-    int             right_fork;
-    int             left_fork;
     struct s_rules  *rules;
     pthread_t       thread;
 } t_philo;
@@ -38,8 +36,8 @@ typedef struct s_rules
     int             time_to_sleep;
     int             nb_time_philo_eat;
     bool            all_eat;
-    pthread_mutex_t forks[10000];
-    t_philo         philo[10000];
+    pthread_mutex_t *forks;
+    t_philo         *philo;
     int             actual;
 } t_rules;
 
