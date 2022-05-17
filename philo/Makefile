@@ -6,7 +6,7 @@
 #    By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 18:09:46 by mthiry            #+#    #+#              #
-#    Updated: 2022/05/15 16:44:31 by mthiry           ###   ########.fr        #
+#    Updated: 2022/05/17 14:48:34 by mthiry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS =  main.c \
 		init_all.c \
 		utils.c \
+		proc.c \
 		error.c \
 
 OBJS = $(SRCS:.c=.o)

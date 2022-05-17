@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:06:01 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/15 20:40:10 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/17 15:12:30 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ typedef struct s_rules
     bool            all_eat;
     pthread_mutex_t forks[10000];
     t_philo         philo[10000];
+    int             actual;
 } t_rules;
 
 int     print_error(char    *message);
 int     init_all(t_rules *rules, char   **argv);
 int     ft_atoi(const char *str);
+int     ft_proc(t_rules *rules);
 
 #endif
