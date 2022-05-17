@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:48:18 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 17:48:17 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:51:54 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int ft_processus(t_rules *rules)
     er = 0;
     while (i < rules->nb_philo)
     {
+        printf("philo: %d\n", rules->philo[i].id);
         er = pthread_create(&rules->philo[i].thread, NULL, (void *)routine, (void *)&rules->philo[i]);
         if (er != 0)
             return (1);
