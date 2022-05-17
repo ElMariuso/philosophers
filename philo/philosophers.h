@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:06:01 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 17:20:48 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:38:56 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int     print_error(char    *message);
 int     init_all(t_rules *rules, char   **argv);
 int     ft_atoi(const char *str);
 int     ft_processus(t_rules *rules);
+int     leave(t_rules *rules);
 
 #endif
