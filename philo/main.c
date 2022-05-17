@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:09:52 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 17:06:01 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:11:05 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     error_code = init_all(&rules, argv);
     if (error_code == 1)
         return (print_error("Something happened when initializing\n"));
-    error_code = ft_proc(&rules);
+    error_code = ft_processus(&rules);
     if (error_code == 1)
         return (print_error("Something happened when process\n"));
     free(rules.forks);
