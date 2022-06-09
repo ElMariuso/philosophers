@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:06:01 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 17:38:56 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/06/09 14:54:55 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,18 @@ typedef struct s_rules
     int             time_to_eat;
     int             time_to_sleep;
     int             nb_time_philo_eat;
+    long long       base_timestamp;
     bool            all_eat;
+    bool            someone_died;
     pthread_mutex_t *forks;
     t_philo         *philo;
 } t_rules;
 
-int     print_error(char    *message);
-int     init_all(t_rules *rules, char   **argv);
-int     ft_atoi(const char *str);
-int     ft_processus(t_rules *rules);
-int     leave(t_rules *rules);
+int         print_error(char    *message);
+int         init_all(t_rules *rules, char   **argv);
+int         ft_processus(t_rules *rules);
+int         ft_atoi(const char *str);
+long long   get_current_timestamp();
+int         leave(t_rules *rules);
 
 #endif

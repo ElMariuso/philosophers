@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:57:47 by mthiry            #+#    #+#             */
-/*   Updated: 2022/05/17 17:05:27 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/06/09 14:54:48 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int init_forks(t_rules *rules)
     int i;
 
     i = 0;
-    rules->forks = (pthread_mutex_t *) malloc (rules->nb_philo * sizeof(pthread_mutex_t ));
+    rules->forks = (pthread_mutex_t *) malloc (rules->nb_philo * sizeof(pthread_mutex_t));
     if (!rules->forks)
         return (1);
     while (i < rules->nb_philo)
@@ -33,7 +33,7 @@ int init_philos(t_rules *rules)
 {
     int i;
 
-    i = 1;
+    i = 0;
     rules->philo = (t_philo *) malloc (rules->nb_philo * sizeof(t_philo));
     if (!rules->philo)
         return (1);
@@ -49,11 +49,12 @@ int init_philos(t_rules *rules)
 
 int init_all(t_rules *rules, char   **argv)
 {
+    rules->base_timestamp = get_current_timestamp();
     rules->nb_philo = ft_atoi(argv[1]);
     rules->time_to_die = ft_atoi(argv[2]);
     rules->time_to_eat = ft_atoi(argv[3]);
     rules->time_to_sleep = ft_atoi(argv[4]);
-    if (rules->nb_philo <= 0 || rules->nb_philo > 10000 || rules->time_to_die <= 0 
+    if (rules->nb_philo <= 0 || rules->nb_philo > INT_MAX || rules->time_to_die <= 0 
     || rules->time_to_eat <= 0 || rules->time_to_sleep <= 0)
         return (1);
     if (argv[5] != NULL)
@@ -64,6 +65,8 @@ int init_all(t_rules *rules, char   **argv)
     }
     else
         rules->nb_time_philo_eat = 0;
+    rules->all_eat = false;
+    rules->someone_died = false;
     if (init_forks(rules) != 0)
         return (1);
     if (init_philos(rules) != 0)

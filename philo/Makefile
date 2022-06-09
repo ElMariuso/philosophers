@@ -6,13 +6,13 @@
 #    By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 18:09:46 by mthiry            #+#    #+#              #
-#    Updated: 2022/05/17 17:39:02 by mthiry           ###   ########.fr        #
+#    Updated: 2022/06/07 17:53:10 by mthiry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 SRCS =  main.c \
 		init_all.c \
 		utils.c \
