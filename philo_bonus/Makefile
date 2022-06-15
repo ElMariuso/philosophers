@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/14 18:09:46 by mthiry            #+#    #+#              #
-#    Updated: 2022/06/13 16:22:36 by mthiry           ###   ########.fr        #
+#    Created: 2022/06/10 17:55:55 by mthiry            #+#    #+#              #
+#    Updated: 2022/06/15 11:44:57 by mthiry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME = philo_bonus
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS =  main.c \
@@ -20,7 +20,9 @@ SRCS =  main.c \
 		processus_utils.c \
 		eating.c \
 		exit.c \
-		
+		error.c \
+		main_routines.c \
+
 all: $(NAME)
 
 .PHONY: all clean fclean re

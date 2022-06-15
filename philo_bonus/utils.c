@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 21:48:05 by mthiry            #+#    #+#             */
-/*   Updated: 2022/06/15 15:11:03 by mthiry           ###   ########.fr       */
+/*   Created: 2022/06/10 18:06:53 by mthiry            #+#    #+#             */
+/*   Updated: 2022/06/15 15:59:37 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,26 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
-void	better_usleep(long long time, t_rules *rules)
+void	better_usleep(long long time, t_rules *rules, t_philo *philo)
 {
 	long long	i;
 
 	i = get_current_timestamp();
 	while (time_diff(i, get_current_timestamp()) * 1000 < time)
 	{
-		if (death_checker(rules) == 1 || eat_checker(rules) == 1)
+		if (death_checker(rules, philo) == 1)
 			break ;
 		usleep(500);
 	}
 }
 
-void	print_action(t_rules *rules, int id, char *str)
+void	print_action(t_rules *rules, t_philo *philo, int id, char *str)
 {
 	long long	time;
 
-	pthread_mutex_lock(&rules->data_race_checker);
+	sem_wait(rules->data_race_checker);
 	time = time_diff(rules->base_timestamp, get_current_timestamp());
-	if (rules->someone_died == false
-		&& rules->nb_philo_eat_all != rules->nb_philo)
+	if (philo->is_dead == false && rules->is_finished == false)
 		printf("%lld %d %s\n", time, id + 1, str);
-	pthread_mutex_unlock(&rules->data_race_checker);
+	sem_post(rules->data_race_checker);
 }
