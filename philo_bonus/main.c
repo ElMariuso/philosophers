@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:55:59 by mthiry            #+#    #+#             */
-/*   Updated: 2022/06/15 16:24:32 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:05:04 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,8 @@ int	main(int argc, char **argv)
 	rules.base_timestamp = get_current_timestamp();
 	init_all(&rules, argv);
 	lock_finisher(&rules);
-	create_thread(rules);
-	usleep(50);
 	processus(&rules);
+	create_thread(rules);
 	destroy_thread(rules);
 	leave(&rules);
 	exit(EXIT_SUCCESS);

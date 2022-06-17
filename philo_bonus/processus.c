@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:57:37 by mthiry            #+#    #+#             */
-/*   Updated: 2022/06/15 16:24:14 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:13:45 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	routine_philo(t_philo *philo)
 		if (end_checker(rules) == 1)
 			break ;
 		print_action(rules, philo, philo->id, "is thinking");
-		usleep(50);
 	}
 	destroy_thread_proc(rules, philo);
+	free(rules->philo);
 	exit(EXIT_SUCCESS);
 }
 

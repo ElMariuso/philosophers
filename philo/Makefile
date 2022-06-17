@@ -6,13 +6,13 @@
 #    By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 18:09:46 by mthiry            #+#    #+#              #
-#    Updated: 2022/06/13 16:22:36 by mthiry           ###   ########.fr        #
+#    Updated: 2022/06/17 15:46:11 by mthiry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 SRCS =  main.c \
 		init_all.c \
 		utils.c \
