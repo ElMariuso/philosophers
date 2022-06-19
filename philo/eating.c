@@ -6,7 +6,7 @@
 /*   By: mthiry <mthiry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:47:32 by mthiry            #+#    #+#             */
-/*   Updated: 2022/06/17 16:01:53 by mthiry           ###   ########.fr       */
+/*   Updated: 2022/06/19 13:17:04 by mthiry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	take_forks(t_philo *philo, t_rules *rules, int first, int second)
 	print_action(rules, philo->id, "has taken a fork");
 	if (rules->nb_philo == 1)
 	{
-		while (death_checker(rules) != 1);
+		while (death_checker(rules) != 1)
+		{
+		}
 		return (1);
 	}
 	else
@@ -51,7 +53,7 @@ int	eating_first(t_philo *philo, t_rules *rules, int left_id, int right_id)
 
 int	eating_second(t_philo *philo, t_rules *rules, int left_id, int right_id)
 {
-	int er;
+	int	er;
 
 	er = take_forks(philo, rules, right_id, left_id);
 	if (er == 1)
@@ -71,7 +73,7 @@ int	eating_second(t_philo *philo, t_rules *rules, int left_id, int right_id)
 
 void	eating(t_philo *philo, t_rules *rules, int left_id, int right_id)
 {
-	int er;
+	int	er;
 
 	if (philo->id % 2 == 0)
 		er = eating_first(philo, rules, left_id, right_id);
